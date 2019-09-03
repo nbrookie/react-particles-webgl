@@ -182,7 +182,7 @@ ParticleField.propTypes = {
     zMax: PropTypes.number
   }).isRequired,
   lines: PropTypes.shape({
-    colorMode: PropTypes.oneOf(['rainbow', 'solid']),
+    colorMode: PropTypes.oneOf(['rainbow', 'solid', 'charthop']),
     color: PropTypes.string,
     transparency: PropTypes.number,
     maxConnections: PropTypes.number,
@@ -196,7 +196,7 @@ ParticleField.propTypes = {
     maxSize: PropTypes.number,
     boundingBox: PropTypes.oneOf(['canvas', 'cube']),
     shape: PropTypes.oneOf(['circle', 'square']),
-    colorMode: PropTypes.oneOf(['rainbow', 'solid']),
+    colorMode: PropTypes.oneOf(['rainbow', 'solid', 'charthop']),
     color: PropTypes.string,
     transparency: PropTypes.number,
     visible: PropTypes.bool

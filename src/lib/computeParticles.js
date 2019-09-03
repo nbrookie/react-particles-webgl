@@ -3,7 +3,9 @@ import {
   BufferAttribute,
   BufferGeometry,
   ShaderMaterial,
-  Vector3
+  Vector3,
+  Color,
+  Float32BufferAttribute
 } from 'three';
 import {
   getParticleVertexShader,
@@ -38,6 +40,10 @@ export default ({
   const particlePositions = new Float32Array(count * 3);
   const particleSizes = new Float32Array(count);
   const particlesData = [];
+  const colors = [];
+  const colorChoices = [0x21fdf9, 0x174a85, 0xebebeb, 0x66737d, 0x527787];
+
+  const myColor = new Color();
 
   let xBounds;
   let yBounds;
@@ -82,6 +88,10 @@ export default ({
       ),
       numConnections: 0
     });
+
+    const c = colorChoices[Math.floor(Math.random() * colorChoices.length)];
+    myColor.setHex(c);
+    colors.push(myColor.r, myColor.g, myColor.b);
   }
 
   pointCloudGeometry.setDrawRange(0, count);
@@ -93,7 +103,10 @@ export default ({
     'size',
     new BufferAttribute(particleSizes, 1).setDynamic(true)
   );
-
+  pointCloudGeometry.addAttribute(
+    'color',
+    new Float32BufferAttribute(colors, 3)
+  );
   // Material for particle, use shaders to morph shape and color
   const pointMaterial = new ShaderMaterial({
     vertexShader: getParticleVertexShader({
@@ -107,6 +120,7 @@ export default ({
     }),
     transparent: transparency < 1,
     blending: AdditiveBlending,
+    vertexColors: true,
     visible
   });
 

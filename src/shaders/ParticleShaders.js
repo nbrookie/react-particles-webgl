@@ -32,6 +32,10 @@ const rainbowVertextColors = `
   vColor = vec3( normalize( abs( worldPosition.xyz ) ));
 `;
 
+const charthopVertextColors = `
+  vColor = color;
+`;
+
 /**
  * Generates a vertex shader for a particle system
  *
@@ -50,10 +54,12 @@ attribute float size;
 varying vec3 vColor;
 
 void main() {
+  // vColor = color;
   vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
   gl_PointSize = size * ( 300.0 / -mvPosition.z ) * ${devicePixelRatio};
   gl_Position = projectionMatrix * mvPosition;
 
+  ${colorMode === 'charthop' ? charthopVertextColors : ''}
   ${colorMode === 'rainbow' ? rainbowVertextColors : ''}
   ${colorMode === 'solid' ? solidVertexColors({ color }) : ''}
 }
@@ -78,7 +84,7 @@ if (r > 1.0) {
  */
 export const getParticleFragmentShader = ({ particleShape, transparency }) => `
 // Color from uniforms arg
-uniform vec3 color;
+// uniform vec3 color;
 
 // Color calculated from vertex shader, based on particle position
 varying vec3 vColor;

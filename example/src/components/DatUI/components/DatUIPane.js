@@ -190,7 +190,7 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => (
         <DatSelect
           path="lines.colorMode"
           label="Color Mode"
-          options={['rainbow', 'solid']}
+          options={['rainbow', 'solid', 'charthop']}
         />
         <DatColor path="lines.color" label="Solid Color" />
         <DatNumber
@@ -221,7 +221,7 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => (
         <DatSelect
           path="particles.colorMode"
           label="Color Mode"
-          options={['rainbow', 'solid']}
+          options={['rainbow', 'solid', 'charthop']}
         />
         <DatColor path="particles.color" label="Solid Color" />
         <DatNumber
