@@ -5,7 +5,8 @@ import {
   ShaderMaterial,
   Vector3,
   Color,
-  Float32BufferAttribute
+  Float32BufferAttribute,
+  Math as threeMath
 } from 'three';
 import {
   getParticleVertexShader,
@@ -59,6 +60,18 @@ export default ({
     xBounds = r;
     yBounds = r;
     zBounds = dimension === '2D' ? 0 : r;
+    const theta = threeMath.randFloatSpread(360);
+    const phi = threeMath.randFloatSpread(360);
+    const sxBounds = r * Math.sin(theta) * Math.cos(phi);
+    const syBounds = r * Math.sin(theta) * Math.sin(phi);
+    const szBounds = r * Math.cos(theta);
+    console.log(`xBounds: ${xBounds}`);
+    console.log(`yBounds: ${yBounds}`);
+    console.log(`zBounds: ${zBounds}`);
+    console.log('---------------------');
+    console.log(`sxBounds: ${sxBounds}`);
+    console.log(`syBounds: ${syBounds}`);
+    console.log(`szBounds: ${szBounds}`);
   }
 
   for (let i = 0; i < count; i += 1) {

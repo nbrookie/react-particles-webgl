@@ -9,7 +9,7 @@ import computeLines from './lib/computeLines';
 import computeParticles from './lib/computeParticles';
 
 // Default Cube dimensions
-const r = 400;
+const r = 800;
 
 /**
  * Creates a particle cloud with various config options

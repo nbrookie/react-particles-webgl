@@ -46,6 +46,9 @@ const handleBoundary = ({
   } else if (boundaryType === 'bounce') {
     // Make the current particle "bounce" off of the "bounds" of the canvas
     // The particles behave like balls thrown at a wall
+    // console.log(`xbounds: ${xBounds}`);
+    // console.log(`ybounds: ${yBounds}`);
+    // console.log(`zbounds: ${zBounds}`);
     if (
       particlePositions[i * 3] < -xBounds / 2 ||
       particlePositions[i * 3] > xBounds / 2
